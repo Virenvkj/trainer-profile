@@ -14,6 +14,7 @@ export const Contact = () => {
     company: '',
     training_type: '',
     participants: '',
+    phone: '',
     message: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -53,6 +54,7 @@ export const Contact = () => {
           company: '',
           training_type: '',
           participants: '',
+          phone: '',
           message: ''
         });
         setTimeout(() => setIsSubmitted(false), 5000);
@@ -62,12 +64,15 @@ export const Contact = () => {
       // Prepare template parameters
       const templateParams = {
         to_name: 'Viren Gajjar',
+        user_name: formData.name,
+        user_email: formData.email,
+        user_phone: formData.phone || 'Not provided',
+        user_company: formData.company || 'Not specified',
+        training_type: formData.training_type || 'Not specified',
+        participants_count: formData.participants || 'Not specified',
+        user_message: formData.message,
         from_name: formData.name,
         from_email: formData.email,
-        company: formData.company || 'Not specified',
-        training_type: formData.training_type || 'Not specified',
-        participants: formData.participants || 'Not specified',
-        message: formData.message,
         reply_to: formData.email
       };
 
@@ -81,6 +86,7 @@ export const Contact = () => {
         company: '',
         training_type: '',
         participants: '',
+        phone: '',
         message: ''
       });
       setTimeout(() => setIsSubmitted(false), 5000);
@@ -244,6 +250,20 @@ export const Contact = () => {
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Phone/WhatsApp Number
+                  </label>
+                  <Input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    placeholder="+1 (555) 123-4567"
+                    className="w-full"
+                  />
+                  <p className="text-xs text-gray-500 mt-1">Include country code for WhatsApp</p>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     Company/Organization
                   </label>
                   <Input
@@ -255,6 +275,9 @@ export const Contact = () => {
                     className="w-full"
                   />
                 </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Training Type of Interest
@@ -268,20 +291,19 @@ export const Contact = () => {
                     className="w-full"
                   />
                 </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Number of Participants
-                </label>
-                <Input
-                  type="text"
-                  name="participants"
-                  value={formData.participants}
-                  onChange={handleInputChange}
-                  placeholder="e.g., 10-20 people"
-                  className="w-full"
-                />
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Number of Participants
+                  </label>
+                  <Input
+                    type="text"
+                    name="participants"
+                    value={formData.participants}
+                    onChange={handleInputChange}
+                    placeholder="e.g., 10-20 people"
+                    className="w-full"
+                  />
+                </div>
               </div>
 
               <div>
