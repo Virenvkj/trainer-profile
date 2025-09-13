@@ -8,7 +8,7 @@ import { AIToolsExpertise } from './components/AIToolsExpertise';
 import { TrainingPrograms } from './components/TrainingPrograms';
 import { TrainingGallery } from './components/TrainingGallery';
 import { SuccessStories } from './components/SuccessStories';
-import { Contact } from './components/Contact-EmailJS';
+import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 
 const Home = () => {
